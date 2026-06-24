@@ -22,16 +22,6 @@ app.get("/", (req, res) => {
     res.send("working")
 })
 
-app.get("/signin", (req, res) => {
-const {name, email, password} = req.body;
-bcrypt.hash(password, 10)
-.then(hash => {
-    UserModel.create({name, email, password: hash})
-    .then(user => res.json(user))
-    .catch(err => res.json(err))
-})
-})
-
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
