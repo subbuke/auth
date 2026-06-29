@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./SignUp.css"
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   const [form, setForm] = React.useState({
@@ -8,6 +9,9 @@ export default function SignUp() {
     password: "",
     confirm: "",
   });
+
+
+  const navigate = useNavigate();
   const [errors, setErrors] = React.useState({});
   const [toast, setToast] = React.useState("");
 
@@ -27,6 +31,10 @@ export default function SignUp() {
       e.confirm = "Passwords do not match.";
     return e;
   };
+
+  const redirect = () => {
+      navigate("/")
+  }
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -161,7 +169,7 @@ export default function SignUp() {
 
         <p className="signin-text">
           Already have an account?{" "}
-          <a href="/sign-in" className="signin-link">Sign in</a>
+          <a href="#" className="signin-link" onClick={redirect}>Sign in</a>
         </p>
       </div>
     </div>

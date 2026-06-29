@@ -1,6 +1,8 @@
 import * as React from "react";
 import ForgotPassword from "./components/ForgetPassword";
 import "./file.css";
+import { useNavigate } from "react-router-dom";
+
 
 export default function SignIn() {
   const [email, setEmail] = React.useState("");
@@ -9,6 +11,7 @@ export default function SignIn() {
   const [passwordError, setPasswordError] = React.useState("");
   const [open, setOpen] = React.useState(false);
   const [toast, setToast] = React.useState("");
+  const navigate = useNavigate();
 
   const showToast = (msg) => {
     setToast(msg);
@@ -76,7 +79,7 @@ export default function SignIn() {
           <div className="field">
             <div className="field-row">
               <label htmlFor="password">Password</label>
-              <button type="button" className="forgot-link" onClick={() => setOpen(true)}>
+              <button type="button" className="forgot-link" onClick={() => navigate("/ForgetPassword")}>
                 Forgot password?
               </button>
             </div>
